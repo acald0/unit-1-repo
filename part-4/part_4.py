@@ -46,6 +46,7 @@
 #         "pages": pages
 #     }
 
+
 #     return book_dictionary
 
 # print(new_book())
@@ -81,9 +82,10 @@ def new_book():
         "pages": pages
     }
 
+    book_library.append(book_dictionary)
     return book_dictionary
 
-print(new_book())
+# print(new_book())
 
 
 
@@ -92,7 +94,54 @@ print(new_book())
 ## Now create a main menu function that gives the user options. Handle their choices with if/elif/else statements.
 
 # Code here
+book_library = [
+    {"title": "1984",
+     "author": "George Orwell",
+     "pages": 328,
+     "year": 1949,
+     "rating": 4.2
+     },
+     {"title": "Fahrenheit 451",
+     "author": "Ray Bradbury",
+     "pages": 158,
+     "year": 1953,
+     "rating": 4},
+     {"title": "To Kill a Mockingbird",
+     "author": "Harper Lee",
+     "pages": 384,
+     "year": 1960,
+     "rating": 4.3}
+]
 
+def formating_book(dictionary_list):
+    info = ''
+    index = 0
+    while index < len(dictionary_list):
+        printable = f"The author {dictionary_list[index]["author"]} wrote {dictionary_list[index]["title"]} in {dictionary_list[index]["year"]}. {dictionary_list[index]["title"]} has {dictionary_list[index]["pages"]} pages and a {dictionary_list[index]["rating"]}/5 rating.  \n \n"
+        info += printable
+        index += 1
+    return info
+
+# print(formating_book(book_library))
+
+def main_menu(book_library):
+    condition = input("Would you like to interact with the library? (Y/N) ")
+    while condition == "Y" or condition == "y":
+        try:
+            choice = int(input("Enter 1 to view your library, enter 2 to add a new book: "))
+        except:
+            choice = int(input("Enter a number to choose an option: "))
+        if choice == 1:
+            print(formating_book(book_library))
+        elif choice == 2:
+            print(new_book())
+        else:
+            print("Invalid choice")
+    else:
+        print("Application terminated.")
+        
+
+main_menu(book_library)
 
 ### Step 5 - while loops
 
