@@ -77,18 +77,43 @@ def new_book():
     # book_library.append(book_dictionary)
     return book_dictionary
 
+def all_titles(library_list):
+    titles = []
+    index = 0
+    while index < len(library_list):
+        titles.append(library_list[index]["title"])
+        index += 1
+    return titles
+
+
+
+def pages_sum(library_list):
+        pages = 0
+        index = 0
+        while index < len(library_list):
+            pages += library_list[index]["pages"]
+            index += 1
+        return pages
+
+
+
+
 def main_menu(book_library):
     condition = input("Would you like to interact with the library? (Y/N) ")
     while condition == "Y" or condition == "y":
         try:
-            choice = int(input("Enter 1 to view your library, enter 2 to add a new book: "))
+            choice = int(input("Enter 1 to view your library, enter 2 to add a new book, enter 3 to view all titles in library, enter 4 to get a total pages of library, enter 5 to quit the application: "))
         except:
             choice = int(input("Enter a number to choose an option: "))
         if choice == 1:
             print(formating_book(book_library))
-            break
         elif choice == 2:
             print(new_book())
+        elif choice == 3:
+            print(all_titles(book_library))
+        elif choice == 4:
+            print(pages_sum(book_library))
+        elif choice == 5:
             break
         else:
             print("Invalid choice")
